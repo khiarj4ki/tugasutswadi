@@ -2,6 +2,8 @@
 session_start();
 include 'db.php';
 
+$error = '';
+
 if (isset($_POST['login'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -26,7 +28,7 @@ if (isset($_POST['login'])) {
     <link rel="stylesheet" href="css/style.css">
     <title>Login</title>
 </head>
-<body>
+<body onload="showError('<?php echo $error; ?>')">
     <h2>Login</h2>
     <form method="post">
         <input type="text" name="username" placeholder="Username" required>
@@ -35,5 +37,6 @@ if (isset($_POST['login'])) {
     </form>
     <?php if (isset($error)) echo $error; ?>
     <p>Don't have an account? <a href="register.php">Register</a></p>
+    <script src="js/script.js"></script>
 </body>
 </html>

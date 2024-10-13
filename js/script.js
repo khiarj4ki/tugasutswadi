@@ -17,3 +17,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+function showError(errorMessage) {
+    if (errorMessage) {
+        alert(errorMessage);
+    }
+}
