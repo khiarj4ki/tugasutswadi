@@ -45,16 +45,20 @@ $uploads = $stmt->fetchAll();
         <?php foreach ($uploads as $upload): ?>
             <div class="gallery-item">
                 <img src="<?php echo $upload['file_path']; ?>" alt="Uploaded Image">
-                <form method="post" action="delete.php">
-                    <input type="hidden" name="file_id" value="<?php echo $upload['id']; ?>">
-                    <button type="submit" class="delete-button">Delete</button>
-                </form>
+                <div class="button-group">
+                    <form method="post" action="delete.php" style="display:inline;">
+                        <input type="hidden" name="file_id" value="<?php echo $upload['id']; ?>">
+                        <button type="submit" class="delete-button">Delete</button>
+                    </form> 
+                    <form method="get" action="<?php echo $upload['file_path']; ?>" style="display:inline;">
+                        <button type="submit" class="download-button">Download</button>
+                    </form>
+                </div>
             </div>
         <?php endforeach; ?>
     </div>
 
     <p><a href="logout.php">Logout</a></p>
     <script src="js/script.js"></script>
-
 </body>
 </html>
